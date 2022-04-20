@@ -32,5 +32,3 @@ function isPali(word){
   return true;
 }
 
-
-

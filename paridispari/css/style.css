@@ -1,0 +1,28 @@
+body{
+  background-color: #0D3B4C;
+  color: white;
+}
+
+.gb-container{
+  width: 60%;
+  margin: 0 auto;
+}
+
+h1{
+  font-weight: 900;
+}
+
+p{
+  font-size: 2rem;
+}
+
+.gb-box{
+  background-color: rgb(182, 52, 52);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+  min-height: 300px;
+}
+
+
+
+
