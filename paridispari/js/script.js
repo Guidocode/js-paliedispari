@@ -8,6 +8,7 @@ Dichiariamo chi ha vinto.
 Bonus: L’inserimento avviene tramite un campo input
 */
 
+const output = document.querySelector('#message-output');
 
 
 let isPariDispari = false;
@@ -45,18 +46,45 @@ while(!isValidNumber){
 console.log('Hai scelto il numero: ', numberPlayer)
 
 
-console.log('Numero random pc: ', pcRandomNumber());
-
-
-// sommo i due valori
-const sum = pcRandomNumber() + numberPlayer;
-console.log('Somma', sum);
-
-
-
-
-
-// Funzioni
+// numero random per pc
 function pcRandomNumber(){
   return Math.floor(Math.random() * 5 + 1);
 }
+
+const numeroGenerato = pcRandomNumber();
+
+console.log('Numero random pc: ', numeroGenerato);
+
+
+// sommo i due valori
+const sum = numeroGenerato + numberPlayer;
+console.log('Somma', sum);
+
+
+// pari o dispari 
+function isPari(somma){
+
+  if(somma % 2) return false;
+  return true;
+
+}
+
+
+// Stabiliamo se la somma dei due numeri è pari o dispari 
+if(isPari(sum)){
+  console.log(`La somma è ${sum}, è pari`)
+}else{
+  console.log(`La somma è ${sum}, è dispari`)
+}
+
+// NON FUNZIONA!
+// Dichiariamo chi ha vinto 
+let risultato = 'pari';
+
+if(risultato === pari_dispari){
+  console.log('Hai vinto');
+}else{
+  console.log('Hai perso');
+}
+
+
