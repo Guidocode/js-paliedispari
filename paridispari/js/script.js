@@ -8,83 +8,56 @@ Dichiariamo chi ha vinto.
 Bonus: L’inserimento avviene tramite un campo input
 */
 
-const output = document.querySelector('#message-output');
+
+document.getElementById('gioca').addEventListener('click', initPariDispari);
 
 
-let isPariDispari = false;
-let pari_dispari;
-
-// L’utente sceglie pari o dispari
-// finché la stringa pari_dispari non è valida chiedo il prompt
-while(!isPariDispari){
-  pari_dispari = prompt('pari o dispari?');
-  if(pari_dispari !== 'pari' && pari_dispari !== 'dispari'){
-    alert('Inserire pari o dispari, riprova!');
+function initPariDispari(){
+  const userChoice = document.getElementById('choice').value;
+  const userNumber = parseInt(document.getElementById('numero').value);
+  const pcNumber = getRandomNumber(1, 5);
+  const sum = userNumber + pcNumber;
+  console.log(userChoice);
+  console.log(userNumber);
+  console.log(pcNumber);
+  console.log(sum);
+  console.log(pariDispari(sum));
+  let outputMsg;
+  if(userChoice === pariDispari(sum)){
+    output = `
+      <h2>Hai vinto</h2>
+      <p>Hai scelto <strong>${userChoice}</strong> e giocato <strong>${userNumber}</strong></p>
+      <p>Il PC ha giocato: <strong>${pcNumber}</strong></p>
+    `;
   }else{
-    isPariDispari = true;
+    output = `
+      <h2>Hai perso</h2>
+      <p>Hai giocato <strong>${userNumber}</strong> e scelto <strong>${userChoice}</strong> </p>
+      <p>Il PC ha giocato: <strong>${pcNumber}</strong></p>
+   `;
   }
-}
-console.log('Hai scelto: ', pari_dispari)
-
-
-let isValidNumber = false;
-let numberPlayer;
-
-// finché il numero inserito non è vaòido chedo il prompt
-while(!isValidNumber){
-   numberPlayer = parseInt(prompt('un numero da 1 a 5'));
-   if(isNaN(numberPlayer)){
-    alert('Inserire un numero');
-    }else{
-      if(numberPlayer < 1 || numberPlayer > 5){
-        alert('Inserire un numero comprso fra 1 e 5');
-      }else{
-        isValidNumber = true;
-      }
-    }
-}
-console.log('Hai scelto il numero: ', numberPlayer)
-
-
-// numero random per pc
-function pcRandomNumber(){
-  return Math.floor(Math.random() * 5 + 1);
+  document.getElementById('output-paridispari').innerHTML = output;
 }
 
-const numeroGenerato = pcRandomNumber();
-
-console.log('Numero random pc: ', numeroGenerato);
-
-
-// sommo i due valori
-const sum = numeroGenerato + numberPlayer;
-console.log('Somma', sum);
-
-
-// pari o dispari 
-function isPari(somma){
-
-  if(somma % 2) return false;
-  return true;
-
+/**
+ * Generatore di numeri random
+ * @param {number} min 
+ * @param {number} max 
+ * @returns 
+ */
+function getRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-
-// Stabiliamo se la somma dei due numeri è pari o dispari 
-if(isPari(sum)){
-  console.log(`La somma è ${sum}, è pari`)
-}else{
-  console.log(`La somma è ${sum}, è dispari`)
+/**
+ * Filtro pari/dispari
+ * @param {number} n 
+ * @returns 
+ */
+function pariDispari (n){
+  if(n % 2) {
+    return 'dispari';
+  }
+  return 'pari';
 }
-
-// NON FUNZIONA!
-// Dichiariamo chi ha vinto 
-let risultato = 'pari';
-
-if(risultato === pari_dispari){
-  console.log('Hai vinto');
-}else{
-  console.log('Hai perso');
-}
-
 

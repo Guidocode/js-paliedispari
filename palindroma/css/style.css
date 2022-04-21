@@ -16,23 +16,6 @@ p{
   font-size: 2rem;
 }
 
-body{
-  background-color: #0D3B4C;
-  color: white;
-}
-
-.gb-container{
-  width: 60%;
-  margin: 0 auto;
-}
-
-h1{
-  font-weight: 900;
-}
-
-p{
-  font-size: 2rem;
-}
 
 .gb-box{
   background-color: rgb(182, 52, 52);
@@ -41,6 +24,10 @@ p{
   min-height: 300px;
 }
 
-
+.gb-input{
+  width: 200px;
+  margin: 0 auto;
+  text-align: center;
+}
 
 

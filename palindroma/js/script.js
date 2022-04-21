@@ -5,30 +5,43 @@ Creare una funzione per capire se la parola inserita è palindroma
 Bonus: L’inserimento avviene tramite un campo input
 */
 
-const output = document.querySelector('#message-output');
 
-const parola = prompt('Inserisci una parola');
+document.getElementById('verifica').addEventListener('click', function(){
+  
+  const parola = document.getElementById('parola').value;
+  initVerifica(parola);
 
-if(isPali(parola)){
-  output.innerHTML = `La parola ${parola} è palindroma`;
-}else{
-  output.innerHTML = `La parola ${parola} non è palindroma`;
+});
+
+
+/**
+ * Funzione di inizializzazione
+ * @param {string} str 
+ */
+function initVerifica(str){
+  
+  const parolaGirata = giraParola(str)
+ 
+  let output;
+  if(str.toLowerCase() === parolaGirata.toLowerCase()){
+    output = `La parola "${str}" è palindroma`;
+  }else{
+    output = `La parola "${str}" non è palindroma`;
+  }
+  document.getElementById('output-palindroma').innerHTML = output;
 }
 
 
+/**
+ * Rigiro la stringa passata
+ * @param {string} str 
+ * @returns 
+ */
+function giraParola(str){
+  let reverseString = '';
 
-// Funzione
-function isPali(word){
+  reverseString = str.split('').reverse().join('') 
 
-  let lowWord = word.toLowerCase();
-  console.log(lowWord);
-
-  let reverseWord = lowWord.split('').reverse().join(''); 
-
-  if(reverseWord !== lowWord){
-    return false;
-  }
-
-  return true;
+  return reverseString;
 }
 
